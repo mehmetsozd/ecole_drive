@@ -1,5 +1,5 @@
 APP_NAME = ecole_drive
-MAIN_SRC = cmd/main.go
+MAIN_SRC = main.go
 MIGRATE_SRC = cmd/migrate/main.go
 
 all: run
