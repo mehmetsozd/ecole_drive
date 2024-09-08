@@ -5,12 +5,12 @@ import (
 )
 
 type User struct {
-	ID        int       `json:"id"`
-	FirstName string    `json:"firstName"`
-	LastName  string    `json:"lastName"`
-	Email     string    `json:"email"`
-	Password  string    `json:"-"`
-	CreatedAt time.Time `json:"createdAt"`
+	ID        int       
+	FirstName string    
+	LastName  string  
+	Email     string   
+	Password  string  
+	CreatedAt time.Time
 }
 
 type RegisterUserPayload struct {
@@ -23,4 +23,10 @@ type RegisterUserPayload struct {
 type LoginUserPayload struct {
 	Email    string `json:"email" validate:"required,email"`
 	Password string `json:"password" validate:"required"`
+}
+
+type UserStore interface {
+	GetUserByEmail(email string) (*User, error)
+	GetUserByID(id int) (*User, error)
+	CreateUser(User) error
 }
